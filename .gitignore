@@ -40,6 +40,8 @@ kubeconfig
 .vault-token
 credentials*
 secrets.*
+docs/evidence/experience.md
+ansible/inventory.ini
 
 # OS
 .DS_Store
@@ -60,3 +62,6 @@ yarn-error.log*
 # Testing
 coverage/
 .nyc_output/
+DevSecOps_AI_Coach_Prompt_FAST_MODE.md
+devsecops-bank-lab_FULL_PLAN_v5.docx
+trust-policy.json

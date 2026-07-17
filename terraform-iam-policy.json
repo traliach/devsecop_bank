@@ -1,0 +1,55 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "ManageLabEc2Role",
+      "Effect": "Allow",
+      "Action": [
+        "iam:CreateRole",
+        "iam:DeleteRole",
+        "iam:UpdateAssumeRolePolicy",
+        "iam:TagRole",
+        "iam:UntagRole",
+        "iam:AttachRolePolicy",
+        "iam:DetachRolePolicy"
+      ],
+      "Resource": "arn:aws:iam::*:role/devsecops-bank-*"
+    },
+    {
+      "Sid": "ManageLabInstanceProfile",
+      "Effect": "Allow",
+      "Action": [
+        "iam:CreateInstanceProfile",
+        "iam:DeleteInstanceProfile",
+        "iam:AddRoleToInstanceProfile",
+        "iam:RemoveRoleFromInstanceProfile",
+        "iam:TagInstanceProfile",
+        "iam:UntagInstanceProfile"
+      ],
+      "Resource": "arn:aws:iam::*:instance-profile/devsecops-bank-*"
+    },
+    {
+      "Sid": "ReadIamMetadata",
+      "Effect": "Allow",
+      "Action": [
+        "iam:GetRole",
+        "iam:ListAttachedRolePolicies",
+        "iam:ListRolePolicies",
+        "iam:GetInstanceProfile",
+        "iam:ListInstanceProfilesForRole"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "PassLabRoleToEc2",
+      "Effect": "Allow",
+      "Action": "iam:PassRole",
+      "Resource": "arn:aws:iam::*:role/devsecops-bank-*",
+      "Condition": {
+        "StringEquals": {
+          "iam:PassedToService": "ec2.amazonaws.com"
+        }
+      }
+    }
+  ]
+}
